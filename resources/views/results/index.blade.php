@@ -24,7 +24,7 @@
 <div style="display: flex; gap: 24px; padding: 24px 64px 40px; align-items: flex-start;">
   <div style="flex: 1 1 0; display: flex; flex-direction: column; gap: 14px;">
     <div style="display: flex; justify-content: space-between; align-items: baseline; padding: 0 4px;">
-      <h1 style="margin: 0; font-family: 'Fraunces', Georgia, serif; font-size: 26px; font-weight: 600; letter-spacing: -0.01em;">{{ $sellers->total() }} {{ Str::plural('seller', $sellers->total()) }} within {{ $radius }} mi of {{ $city->name }}</h1>
+      <h1 style="margin: 0; font-family: 'Fraunces', Georgia, serif; font-size: 26px; font-weight: 600; letter-spacing: -0.01em;">{{ $sellers->total() }} {{ Str::plural('seller', $sellers->total()) }} within {{ $radius }} mi of {{ $placeName }}</h1>
       <div style="display: flex; align-items: center; gap: 16px; flex-shrink: 0;">@if ($zipNotice)<span role="status" style="font-size: 14px; color: #5C554A; white-space: nowrap;">{{ $zipNotice }}</span>@endif<label style="display: flex; align-items: center; gap: 8px; font-size: 14px; color: #5C554A;"><span>Sort</span><select data-sort style="border: 1px solid #E4E1DA; border-radius: 999px; background: #FFFFFF; height: 40px; padding: 0 12px; font-size: 14px; font-family: inherit; color: #1E1B16;">@foreach (['distance' => 'Distance', 'updated' => 'Recently updated', 'saved' => 'Most saved', 'name' => 'A–Z'] as $value => $label)<option value="{{ $value }}"@selected($sort === $value)>{{ $label }}</option>@endforeach</select></label></div>
     </div>
 
