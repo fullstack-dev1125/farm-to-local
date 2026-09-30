@@ -126,3 +126,31 @@ test('home cooks show their permit disclosure (rule 4)', function () {
 
     expect(str_contains($html, '>Permitted<') || str_contains($html, 'Home kitchen · no permit on file'))->toBeTrue();
 });
+
+test('a buyer can type a ZIP on the results page ("change" opens a ZIP field in the search form)', function () {
+    $html = $this->get('/texas/austin')->assertOk()->getContent();
+
+    // The field lives inside the GET form, so Enter submits ?zip= with the current radius and filters.
+    expect($html)->toMatch('/<form id="results-form" method="get"[^>]*>.*<input type="text" name="zip" value=""[^>]*data-zip-input/s')
+        ->toContain('data-change-zip')
+        ->not->toContain('<a href="#" style="color: #24512F; font-size: 13px; text-decoration: underline; text-underline-offset: 3px;">change</a>');
+
+    // site.js §3 redirects any input whose placeholder mentions ZIP to city-austin.html; ours must not match.
+    preg_match('/<input[^>]*data-zip-input[^>]*>/', $html, $input);
+    expect($input[0])->not->toMatch('/placeholder="[^"]*zip/i');
+
+    $this->get('/texas/austin?zip=78620&radius=25')
+        ->assertOk()
+        ->assertSee('within 25 mi of 78620')
+        ->assertSee('Dripping Springs, TX 78620');
+});
+
+test('a recognised ZIP is carried through filter changes; an unknown one is not', function () {
+    $this->get('/texas/austin?zip=78620&cat=meat-poultry')
+        ->assertOk()
+        ->assertSee('name="zip" value="78620"', false);
+
+    $this->get('/texas/austin?zip=99999')
+        ->assertOk()
+        ->assertSee('name="zip" value=""', false);
+});

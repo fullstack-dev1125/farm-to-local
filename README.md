@@ -40,14 +40,14 @@ Pages to try:
 |---|---|
 | `/texas/austin` | results, 50 mi around 78701 (designs/city-austin.html) |
 | `/texas/austin?radius=25&cat=meat-poultry` | filtered |
-| `/texas/austin?zip=78620` | re-centred on a ZIP (Dripping Springs) |
+| `/texas/austin?zip=78620` | re-centred on a ZIP (Dripping Springs) — or click **change** beside "Austin, TX 78701" and type one |
 | `/texas/austin?zip=99999` | unknown ZIP: falls back to Austin with a notice |
 | `/texas/austin?cat=homestead-goods&radius=25` | empty state (designs/city-austin-empty.html) |
 
 ## Tests
 
 ```bash
-php artisan test          # 42 tests, ~3 s, MySQL farmtolocal_test
+php artisan test          # 44 tests, ~3 s, MySQL farmtolocal_test
 ./vendor/bin/pint --test  # code style
 ```
 

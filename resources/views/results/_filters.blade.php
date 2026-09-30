@@ -1,5 +1,6 @@
 {{--
-    Search + filter bar (designs/city-austin.html), lifted verbatim. Wired in this slice: location label,
+    Search + filter bar (designs/city-austin.html), lifted verbatim. Wired in this slice: location label +
+    "change" (opens a ZIP field, ?zip=; the field also carries the current ZIP through filter changes),
     radius (?radius=25|50|100), Category (?cat=), Verified only (?verified=1), Search, Clear all; changes
     auto-submit (assets/app.js). Static until Milestone 2 (markup kept as designed, inputs unnamed so they
     submit nothing): keyword search, How to buy, Practices, What kind, Seller type, Hours & pay.
@@ -12,7 +13,7 @@
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6B6357" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
       <input type="text" placeholder="Search sellers, products, markets — try &quot;pastured eggs&quot; or &quot;sourdough&quot;" style="flex: 1 1 0; min-width: 0; border: 0; background: transparent; font-size: 15px; font-family: inherit; color: #1E1B16; outline: none;">
       <span style="width: 1px; height: 26px; background: #E4E1DA;"></span>
-      <div style="display: flex; align-items: center; gap: 8px; padding: 0 10px; font-size: 14px; white-space: nowrap;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#24512F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-7.1 7-12a7 7 0 1 0-14 0c0 4.9 7 12 7 12z"></path><circle cx="12" cy="10" r="2.5"></circle></svg><span style="font-weight: 600;">{{ $centre->label }}</span><a href="#" style="color: #24512F; font-size: 13px; text-decoration: underline; text-underline-offset: 3px;">change</a></div>
+      <div style="display: flex; align-items: center; gap: 8px; padding: 0 10px; font-size: 14px; white-space: nowrap;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#24512F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-7.1 7-12a7 7 0 1 0-14 0c0 4.9 7 12 7 12z"></path><circle cx="12" cy="10" r="2.5"></circle></svg><span data-zip-label style="font-weight: 600;">{{ $centre->label }}</span><input type="text" name="zip" value="{{ $zipQuery }}" data-zip-input hidden inputmode="numeric" maxlength="10" autocomplete="postal-code" aria-label="ZIP code" placeholder="78701" style="width: 84px; height: 30px; border: 1px solid #E4E1DA; border-radius: 999px; padding: 0 10px; font-size: 14px; font-family: inherit; background: #FFFFFF;"><a href="#zip" data-change-zip style="color: #24512F; font-size: 13px; text-decoration: underline; text-underline-offset: 3px;">change</a></div>
       <select name="radius" aria-label="Radius" style="border: 1px solid #E4E1DA; border-radius: 999px; background: #FFFFFF; height: 34px; padding: 0 10px; font-size: 14px; font-family: inherit; color: #1E1B16;">@foreach ($radii as $r)<option value="{{ $r }}"@selected($r === $radius)>{{ $r }} mi</option>@endforeach</select>
       <button type="submit" style="height: 36px; padding: 0 18px; border-radius: 999px; border: 0; background: #2F6B3F; color: #FFFFFF; font-size: 14px; font-weight: 600; cursor: pointer; font-family: inherit;">Search</button>
     </div>

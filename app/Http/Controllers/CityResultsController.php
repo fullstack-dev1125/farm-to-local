@@ -54,6 +54,8 @@ class CityResultsController extends Controller
             'pageUrl' => url("/{$state->slug}/{$city->slug}"),
             // "…within 50 mi of Austin", or of the ZIP when ?zip= recentred the search.
             'placeName' => $request->validated('zip') && $zipNotice === null ? $centre->zip : $city->name,
+            // A recognised ?zip= rides along on every filter change; an unknown one is dropped after its notice.
+            'zipQuery' => $request->validated('zip') && $zipNotice === null ? $centre->zip : null,
         ];
 
         if ($sellers->total() === 0) {

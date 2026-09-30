@@ -14,7 +14,7 @@ Scope: the five items named for this task (fresh app + layout, sellers migration
 | 5 SellerSearch | `app/Queries/SellerSearch.php`: the docs/02 query exactly (bounding box, `ST_Distance_Sphere`, status filter, `HAVING`, paid-first ordering). ZIP and city-name geocoding; unknown input returns `null`. Filters: radius, categories, verified_only, sort implemented; buy methods, include_shares, open_this_weekend present with TODOs. Eager-loads what a row renders. |
 | 6 Layout & components | `layouts/site.blade.php`, `x-site.header` (active-nav prop), `x-site.footer`; components `seller-row`, `badge`, `verified-badge`, `featured-badge`, `chip`, `category-tile`, `cta-zip`, `map-panel`. |
 | 7 Route | `GET /{state}/{city}` → `CityResultsController` with `CitySearchRequest`; `?radius=25\|50\|100&cat=&verified=1&sort=` (+ `zip`, `per_page`, `page`). Empty state when nothing matches. |
-| 8 Tests | 42 Pest tests / 166 assertions, green on MySQL. Mutation-checked: removing the `types` eager-load fails the N+1 test (17 → 40 queries); removing paid-first ordering fails both ordering tests. |
+| 8 Tests | 44 Pest tests / 178 assertions, green on MySQL. Mutation-checked: removing the `types` eager-load fails the N+1 test (17 → 40 queries); removing paid-first ordering fails both ordering tests. |
 | 9 Deliverables | `docs/screenshots/` (design vs build at 1280px, both pages, + `capture.mjs`), README.md, this file, STACK-CHANGE.md. |
 
 ## 2. Deviations from the docs, and why
@@ -70,8 +70,10 @@ Scope: the five items named for this task (fresh app + layout, sellers migration
   SPATIAL index is on `location`). At tens of thousands of sellers, add a `(lat, lng)` index or switch the
   prefilter to `MBRContains(…, location)` so the spatial index is used. I didn't change it here, to keep the
   docs/02 query exact.
-- `?zip=` on the city page is not in docs/03. site.js ZIP boxes send it, so the page re-centres on a known ZIP and
-  falls back to the city with a notice for an unknown one. `per_page` (10/20/50) backs the design's pager.
+- `?zip=` on the city page is not in docs/03, but it is how a buyer searches by ZIP here: "change" beside the
+  location label opens a ZIP field in the filter form (Enter searches; the ZIP then rides along on every filter
+  change). A known ZIP re-centres the search; an unknown one falls back to the city with a notice. The field's
+  placeholder avoids the word "ZIP" so site.js §3 can't hijack it. `per_page` (10/20/50) backs the design's pager.
 - Bad query values are normalised to defaults (a public GET page shouldn't answer 422).
 
 ### Design vs docs/06 (docs/06 wins — the design files are stale here)
@@ -107,7 +109,7 @@ Scope: the five items named for this task (fresh app + layout, sellers migration
 Unchanged, as required. It is prototype code: §3 sends any input whose placeholder mentions "ZIP" to
 `city-austin.html`, and §5/§7 show "needs the backend" toasts (e.g. the "change" link). Neither page here has a
 ZIP-placeholder input, so §3 doesn't fire. `public/assets/app.js` (new) adds the real behaviour: filters
-auto-submit. Before the home/browse pages ship (M2), §3 needs replacing. Either the designer issues a new site.js,
+auto-submit, and "change" opens the ZIP field instead of site.js's "needs the backend" toast. Before the home/browse pages ship (M2), §3 needs replacing. Either the designer issues a new site.js,
 or app.js overrides it.
 
 ## 3. Every migration change
