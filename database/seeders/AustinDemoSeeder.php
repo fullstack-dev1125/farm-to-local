@@ -154,13 +154,14 @@ class AustinDemoSeeder extends Seeder
             return $z;
         });
 
-        // Deterministic mix: index → [status, plan]. Paid sellers appear in every band so "non-free first"
+        // Deterministic mix: index → [status, plan]. About 1 in 14 is paid (the named sellers already cover Pro and Partner), spread across bands so "non-free first"
         // is tested against closer free sellers; seeded/suspended ones must never appear in results.
         $mix = [
-            [SellerStatus::Listed, Plan::Free], [SellerStatus::Verified, Plan::Free], [SellerStatus::Listed, Plan::Pro],
+            [SellerStatus::Listed, Plan::Free], [SellerStatus::Verified, Plan::Free], [SellerStatus::Listed, Plan::Free],
             [SellerStatus::Verified, Plan::Free], [SellerStatus::Seeded, Plan::Free], [SellerStatus::Listed, Plan::Free],
-            [SellerStatus::Verified, Plan::Partner], [SellerStatus::Listed, Plan::Free], [SellerStatus::Suspended, Plan::Free],
-            [SellerStatus::Verified, Plan::Free],
+            [SellerStatus::Verified, Plan::Pro], [SellerStatus::Listed, Plan::Free], [SellerStatus::Suspended, Plan::Free],
+            [SellerStatus::Verified, Plan::Free], [SellerStatus::Listed, Plan::Free], [SellerStatus::Verified, Plan::Free],
+            [SellerStatus::Listed, Plan::Free], [SellerStatus::Verified, Plan::Free],
         ];
 
         $i = 0;
@@ -199,12 +200,17 @@ class AustinDemoSeeder extends Seeder
             T::Fisherman => ['seafood'],
         };
 
+        [$name, $description] = $this->nameFor($type, $city);
+
         $seller = Seller::factory()
             ->at($lat, $lng, $city, $state)
             ->status($status)
             ->plan($plan)
             ->ofType($type)
             ->create([
+                'name' => $name,
+                'slug' => Str::slug($name).'-'.fake()->unique()->lexify('????'),
+                'description' => $description,
                 'zip' => $zip,
                 'delivers' => fake()->boolean(25),
                 'delivery_radius_mi' => 15,
@@ -214,6 +220,27 @@ class AustinDemoSeeder extends Seeder
             ]);
 
         $seller->categories()->attach(Category::whereIn('slug', $categories)->pluck('id'));
+    }
+
+    /** A believable name and one-liner for a padded seller of the given type. */
+    private function nameFor(T $type, ?string $city): array
+    {
+        $family = fake()->lastName();
+        $place = fake()->randomElement(['Live Oak', 'Pecan Creek', 'Red Barn', 'Blackland', 'Limestone', 'Bluebonnet', 'Post Oak', 'River Bend']);
+
+        return match ($type) {
+            T::Farm => fake()->randomElement([
+                ["{$family} Family Farm", 'Seasonal vegetables and pastured eggs from a small family farm. Farm stand open weekends.'],
+                ["{$place} Ranch", 'Grass-fed beef and pastured pork, sold by the cut or by the quarter.'],
+                ["{$place} Orchard", 'Peaches, plums and figs in season; pecans in the fall. Call ahead for U-pick days.'],
+                ["{$family} Pastures", 'Pasture-raised chickens and eggs, moved to fresh grass daily.'],
+            ]),
+            T::Bakery => ["{$place} Bread Co.", 'Sourdough, focaccia and kolaches baked in small batches. Pre-order by Thursday.'],
+            T::HomeMaker => ["{$family} Kitchen", 'Jams, pickles and hot sauce made in small batches under the Texas cottage food law.'],
+            T::Nursery => ["{$place} Plant Farm", 'Vegetable starts, herbs and Texas natives grown on site.'],
+            T::HomeCook => ["{$family}'s Table", 'Weekly meal boxes and tamales by the dozen. Order by Wednesday for Saturday pickup.'],
+            T::Fisherman => ["{$place} Catch", 'Gulf shrimp and fish sold straight off the boat, frozen at the dock.'],
+        };
     }
 
     private function createSeller(array $row): void
