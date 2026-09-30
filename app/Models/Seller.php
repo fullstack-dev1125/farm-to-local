@@ -15,7 +15,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * @property float|null $miles  Selected by App\Queries\SellerSearch.
+ * @property float|null $miles Selected by App\Queries\SellerSearch.
  */
 #[ObservedBy(SellerObserver::class)]
 class Seller extends Model
