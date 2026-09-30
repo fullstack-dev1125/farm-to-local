@@ -10,7 +10,7 @@
 @section('page', 'results-empty')
 @section('frame', "width: 1280px; box-sizing: border-box; display: flex; flex-direction: column; background: #FAFAF8; font-family: 'Instrument Sans', system-ui, sans-serif; color: #1E1B16; min-height: 100vh;")
 
-@php($activeNav = 'browse')
+@php($activeNav = null)   {{-- the empty-state design underlines no nav item --}}
 
 @push('head')
 <style>
@@ -53,7 +53,7 @@ select.in{appearance:none;-webkit-appearance:none;background:#fff url("data:imag
     <span class="mut" style="font-size:13px;margin-left:auto">{{ $zipNotice ?? $placeLine }}</span>
   </form>
   <div style="display:flex;gap:40px;align-items:flex-start">
-    <div style="flex:1 1 0;display:flex;flex-direction:column;gap:22px">
+    <div style="flex:1 1 0;min-width:0;display:flex;flex-direction:column;gap:22px">
       <div class="card" style="padding:40px;display:flex;gap:32px;align-items:center">
         <div class="sq" style="width:220px;flex:0 0 auto;background-image:url('{{ asset('assets/photos/'.$emptyPhoto) }}');border-radius:16px;filter:grayscale(.6);opacity:.8"></div>
         <div><div class="eyebrow">No results</div><h1 class="h1" style="margin-top:8px;font-size:34px">No {{ $category ? $categoryLower.' ' : '' }}sellers within {{ $radius }} miles of {{ $centre->zip ?? $city->name }} yet.</h1><p style="font-size:15px;line-height:1.6;color:#4A443B;margin:10px 0 0">Here's what's close, what ships, and how to get told when someone lists.</p>
@@ -61,14 +61,14 @@ select.in{appearance:none;-webkit-appearance:none;background:#fff url("data:imag
       </div>
       @if ($shippers->isNotEmpty())
       <div><div class="row" style="justify-content:space-between;margin-bottom:12px"><h2 class="h2">Ships to {{ $centre->zip ?? $state->name }}</h2><a href="{{ url('/ships') }}" style="color:#2F6B3F;font-weight:600;text-decoration:none">All {{ $shipCount }} →</a></div>
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px">
+        <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px">
           @foreach ($shippers as $s)<a href="{{ url('/shop/'.$s->slug) }}" class="card" style="overflow:hidden;text-decoration:none;color:inherit"><div class="sq" style="background-image:url('{{ App\Support\PlaceholderPhoto::url($s) }}');border-radius:0"></div><div style="padding:12px 14px;display:flex;flex-direction:column;gap:4px"><span class="row" style="gap:4px">@if ($s->primaryType())<x-badge :type="$s->primaryType()" class="bd" />@endif @if ($s->isVerified())<span class="bd ver">✓ Verified</span>@endif</span><div style="font-family:Fraunces,Georgia,serif;font-size:17px;font-weight:600">{{ $s->name }}</div><div class="mut" style="font-size:13px">{{ $s->city }}, {{ $s->state }}</div><div style="font-size:13px;font-weight:600;color:#24512F">📦 {{ $s->ships_scope === 'nationwide' ? 'Ships nationwide' : 'Ships '.implode(', ', $s->ships_states ?? []) }}{{ $s->ship_fee_cents ? ' · $'.number_format($s->ship_fee_cents / 100).' flat' : '' }}</div></div></a>@endforeach
         </div></div>
       @endif
       @if ($local->isNotEmpty())
       <div><div class="row" style="justify-content:space-between;margin-bottom:12px"><h2 class="h2">Local near {{ $city->name }}, everything</h2><a href="{{ $everything['url'] ?? $pageUrl }}" style="color:#2F6B3F;font-weight:600;text-decoration:none">All {{ $everything['count'] ?? $local->count() }} →</a></div>
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px">
-          @foreach ($local as $s)<a href="{{ url('/shop/'.$s->slug) }}" class="card" style="display:flex;gap:12px;padding:12px;text-decoration:none;color:inherit"><span class="sq" style="width:84px;flex:0 0 auto;background-image:url('{{ App\Support\PlaceholderPhoto::url($s) }}');border-radius:8px"></span><span style="display:flex;flex-direction:column;gap:3px;min-width:0"><span class="row" style="gap:4px">@if ($s->primaryType())<x-badge :type="$s->primaryType()" class="bd" size="11" />@endif @if ($s->isVerified())<span class="bd ver" style="font-size:11px">✓ Verified</span>@endif</span><span style="font-weight:600">{{ $s->name }}</span><span class="mut" style="font-size:13px">{{ $s->city }} · {{ $s->distanceLabel() }}</span></span></a>@endforeach
+        <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px">
+          @foreach ($local as $s)<a href="{{ url('/shop/'.$s->slug) }}" class="card" style="display:flex;gap:12px;padding:12px;text-decoration:none;color:inherit"><span class="sq" style="width:84px;flex:0 0 auto;background-image:url('{{ App\Support\PlaceholderPhoto::url($s) }}');border-radius:8px"></span><span style="display:flex;flex-direction:column;gap:3px;min-width:0"><span class="row" style="gap:4px;overflow:hidden">@if ($s->primaryType())<x-badge :type="$s->primaryType()" class="bd" size="11" />@endif @if ($s->isVerified())<span class="bd ver" style="font-size:11px">✓ Verified</span>@endif</span><span style="font-weight:600">{{ $s->name }}</span><span class="mut" style="font-size:13px">{{ $s->city }} · {{ $s->distanceLabel() }}</span></span></a>@endforeach
         </div></div>
       @endif
     </div>
