@@ -26,7 +26,7 @@ class SellerFactory extends Factory
         ]);
 
         return [
-            'slug' => Str::slug($name).'-'.Str::lower(Str::random(4)),
+            'slug' => Str::slug($name).'-'.fake()->unique()->lexify('????'),
             'name' => $name,
             'description' => fake()->sentence(14),
             'phone' => '+1512'.fake()->numerify('#######'),
