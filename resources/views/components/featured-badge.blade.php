@@ -1,0 +1,2 @@
+{{-- ★ Featured (#D9471F) — the only badge allowed on a photo, top-left (docs/06). --}}
+<span {{ $attributes->merge(['style' => 'position: absolute; left: 8px; top: 8px; display: inline-flex; align-items: center; gap: 4px; background: #D9471F; color: #FFFFFF; font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 999px;']) }}><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.7-5.3 4.8 1.6 7L12 17.4 5.7 21l1.6-7L2 9.3l7.1-.7z"/></svg>Featured</span>

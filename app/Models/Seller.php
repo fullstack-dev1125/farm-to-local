@@ -107,4 +107,53 @@ class Seller extends Model
     {
         return $this->plan?->isPaid() ?? false;
     }
+
+    public function isService(): bool
+    {
+        return $this->primaryType()?->isService() ?? false;
+    }
+
+    /**
+     * Permit line beside the badges. Prepared food always discloses permit status (CLAUDE.md rule 4);
+     * other sellers show their declared permit type, e.g. "TX cottage food".
+     */
+    public function permitLabel(): ?string
+    {
+        if ($this->primaryType() === SellerTypeEnum::HomeCook) {
+            return $this->permit_status === 'permitted' ? 'Permitted' : 'Home kitchen · no permit on file';
+        }
+
+        return $this->permit_type;
+    }
+
+    /**
+     * The "how they sell" chips on a result row. Service providers list their trades (approved tags in
+     * the services group); everyone else lists buy methods held on the seller row. Farm stand and market
+     * chips need seller_hours / market_attendances, which arrive with Milestone 2.
+     *
+     * @return list<string>
+     */
+    public function buyChips(): array
+    {
+        if ($this->isService()) {
+            return $this->tags->where('group', 'services')->pluck('name')->take(3)->values()->all();
+        }
+
+        return array_values(array_filter([
+            $this->csa ? 'CSA' : null,
+            $this->delivers ? 'Delivers'.($this->delivery_radius_mi ? " {$this->delivery_radius_mi} mi" : '') : null,
+            $this->ships ? ($this->ships_scope === 'nationwide' ? 'Ships nationwide' : 'Ships') : null,
+            $this->wholesale ? 'Wholesale' : null,
+        ]));
+    }
+
+    /** "22 mi", "1.1 mi" — one decimal under 2 miles, as in the design. */
+    public function distanceLabel(): ?string
+    {
+        if ($this->miles === null) {
+            return null;
+        }
+
+        return ($this->miles < 2 ? number_format($this->miles, 1) : (string) round($this->miles)).' mi';
+    }
 }
