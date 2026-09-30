@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1280">
+<title>Staff · Weekly email builder — Farm to Local</title>
+<meta name="description" content="Farm to Local staff backend — Weekly email builder.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&amp;family=Instrument+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+.h1{font-family:'Fraunces',Georgia,serif;font-size:30px;font-weight:600;letter-spacing:-0.01em;margin:0;line-height:1.1}
+.h2{font-family:'Fraunces',Georgia,serif;font-size:20px;font-weight:600;margin:0}
+.card{background:#fff;border:1px solid #E4E1DA;border-radius:14px}
+.inset{background:#FCFCFA;border:1px solid #E4E1DA;border-radius:10px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:38px;padding:0 16px;border-radius:999px;background:#2F6B3F;color:#fff;font-weight:600;font-size:14px;text-decoration:none;border:0;cursor:pointer;font-family:inherit;white-space:nowrap}
+.btn.o{background:#fff;color:#1E1B16;border:1.5px solid #E4E1DA}.btn.d{background:#1E1B16}.btn.r{background:#fff;color:#B3261E;border:1.5px solid #F0C9C4}.btn.s{height:32px;font-size:13px;padding:0 12px}
+.in{height:38px;border:1.5px solid #E4E1DA;border-radius:9px;padding:0 12px;background:#fff;font-size:14px;font-family:inherit;color:#1E1B16;box-sizing:border-box}
+textarea.in{height:auto;padding:10px 12px;resize:vertical;width:100%}
+select.in{appearance:none;-webkit-appearance:none;padding-right:30px;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236B6357' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 10px center}
+.lbl{font-size:12px;font-weight:700;display:block;margin-bottom:5px;color:#4A443B}
+.mut{color:#6B6357}.sm{font-size:13px}.xs{font-size:12px}
+.bd{display:inline-flex;align-items:center;gap:4px;padding:2px 8px;border-radius:999px;font-size:11.5px;font-weight:700;white-space:nowrap}
+.bd.farm{background:#2F8F4E;color:#fff}.bd.ver{background:#2563EB;color:#fff}.bd.feat{background:#D9471F;color:#fff}.bd.part{background:#F5E9C8;color:#6E5314}.bd.ok{background:#E4EFE3;color:#24512F}.bd.mut{background:#ECEAE5;color:#6B6357}.bd.pre{background:#DDE8EE;color:#23516B}.bd.warn{background:#FBE9C8;color:#8A5A1E}.bd.bad{background:#F8E5DA;color:#8A3A1B}.bd.maker{background:#EEDFC8;color:#7A4B2A}.bd.fish{background:#DDE8EE;color:#23516B}.bd.home{background:#E9E1EE;color:#5B3E6E}
+.tbl{width:100%;border-collapse:collapse;font-size:13.5px}
+.tbl th{text-align:left;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#6B6357;padding:10px 12px;border-bottom:1px solid #E4E1DA;white-space:nowrap}
+.tbl td{padding:11px 12px;border-bottom:1px solid #ECEAE5;vertical-align:middle}
+.tbl tr:last-child td{border-bottom:0}.tbl .bd{white-space:normal}.tbl tr:hover td{background:#FCFCFA}
+.stat{background:#fff;border:1px solid #E4E1DA;border-radius:12px;padding:14px 16px 12px}
+.stat .k{font-size:12px;font-weight:600;color:#6B6357}.stat .v{font-family:'Fraunces',Georgia,serif;font-size:28px;font-weight:600;line-height:1.1;margin-top:2px}.stat .d{font-size:12px;color:#24512F;font-weight:600;margin-top:2px}.stat .d.w{color:#8A5A1E}
+.sq{aspect-ratio:1/1;background-size:cover;background-position:center;border-radius:8px}
+.tabs{display:flex;gap:6px}.tabs a{height:34px;padding:0 14px;border-radius:999px;border:1.5px solid #E4E1DA;background:#fff;font-size:13px;font-weight:600;display:flex;align-items:center;gap:6px;text-decoration:none;color:#1E1B16}.tabs a.on{background:#1E1B16;color:#fff;border-color:#1E1B16}
+.row{display:flex;align-items:center;gap:10px}
+.tog{width:38px;height:22px;border-radius:11px;background:#E4E1DA;position:relative;display:inline-block;flex:0 0 auto;cursor:pointer}.tog::after{content:"";position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.25)}.tog.on{background:#2F6B3F}.tog.on::after{left:19px}
+</style>
+</head>
+<body data-page="admin-email">
+<div style="width: 1280px; min-height: 100vh; box-sizing: border-box; display: flex; background: #FAFAF8; font-family: 'Instrument Sans', system-ui, sans-serif; color: #1E1B16;">
+<aside style="width: 232px; flex-shrink: 0; background: #1F3D2B; color: #fff; padding: 18px 12px 24px; display: flex; flex-direction: column; box-sizing: border-box; position: sticky; top: 0; height: 100vh; overflow: auto;">
+  <a href="index.html" style="display:flex;align-items:center;gap:8px;text-decoration:none;color:#fff;padding:0 12px 14px;border-bottom:1px solid #33553F;margin-bottom:10px"><span style="width:28px;height:28px;border-radius:7px;background:#2F6B3F;display:flex;align-items:center;justify-content:center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20c0-9 5-14 16-16-1 11-6 16-16 16z"></path><path d="M4 20c4-6 8-9 12-12"></path></svg></span><span style="font-family:'Fraunces',Georgia,serif;font-size:16px;font-weight:600;white-space:nowrap">Farm to Local</span><span style="margin-left:auto;font-size:10px;font-weight:700;letter-spacing:.08em;background:#D9471F;border-radius:6px;padding:2px 6px">STAFF</span></a>
+  <a href="admin.html" style="display:flex;align-items:center;justify-content:space-between;padding:9px 12px;border-radius:9px;font-size:14px;font-weight:500;color:#D6CEBF;background:transparent;text-decoration:none">Overview</a><a href="admin-review.html" style="display:flex;align-items:center;justify-content:space-between;padding:9px 12px;border-radius:9px;font-size:14px;font-weight:500;color:#D6CEBF;background:transparent;text-decoration:none">Verification queue<span style=background:#D9471F;color:#fff;font-size:11px;font-weight:700;border-radius:8px;padding:1px 6px>14</span></a><a href="admin-reports.html" style="display:flex;align-items:center;justify-content:space-between;padding:9px 12px;border-radius:9px;font-size:14px;font-weight:500;color:#D6CEBF;background:transparent;text-decoration:none">Reports<span style=background:#D9471F;color:#fff;font-size:11px;font-weight:700;border-radius:8px;padding:1px 6px>6</span></a><a href="admin-sellers.html" style="display:flex;align-items:center;justify-content:space-between;padding:9px 12px;border-radius:9px;font-size:14px;font-weight:500;color:#D6CEBF;background:transparent;text-decoration:none">Sellers</a><a href="admin-shares.html" style="display:flex;align-items:center;justify-content:space-between;padding:9px 12px;border-radius:9px;font-size:14px;font-weight:500;color:#D6CEBF;background:transparent;text-decoration:none">Neighbor shares</a><div style="font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:#8A8477;margin:18px 12px 6px">Growth</div><a href="admin-import.html" style="display:flex;align-items:center;justify-content:space-between;padding:9px 12px;border-radius:9px;font-size:14px;font-weight:500;color:#D6CEBF;background:transparent;text-decoration:none">Seeded importer</a><a href="admin-sponsors.html" style="display:flex;align-items:center;justify-content:space-between;padding:9px 12px;border-radius:9px;font-size:14px;font-weight:500;color:#D6CEBF;background:transparent;text-decoration:none">Featured & sponsors</a><a href="admin-email.html" style="display:flex;align-items:center;justify-content:space-between;padding:9px 12px;border-radius:9px;font-size:14px;font-weight:600;color:#fff;background:#33553F;text-decoration:none">Weekly email</a><a href="admin-cities.html" style="display:flex;align-items:center;justify-content:space-between;padding:9px 12px;border-radius:9px;font-size:14px;font-weight:500;color:#D6CEBF;background:transparent;text-decoration:none">Cities & launch</a><div style="font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:#8A8477;margin:18px 12px 6px">Business</div><a href="admin-money.html" style="display:flex;align-items:center;justify-content:space-between;padding:9px 12px;border-radius:9px;font-size:14px;font-weight:500;color:#D6CEBF;background:transparent;text-decoration:none">Money</a><a href="admin-templates.html" style="display:flex;align-items:center;justify-content:space-between;padding:9px 12px;border-radius:9px;font-size:14px;font-weight:500;color:#D6CEBF;background:transparent;text-decoration:none">SMS & email templates</a><a href="admin-settings.html" style="display:flex;align-items:center;justify-content:space-between;padding:9px 12px;border-radius:9px;font-size:14px;font-weight:500;color:#D6CEBF;background:transparent;text-decoration:none">Settings</a>
+  <div style="margin-top:auto;padding:14px 12px 0;border-top:1px solid #33553F;font-size:12px;color:#B8C9BB;line-height:1.6">Signed in as <b style="color:#fff">Daren</b> · owner<br><a href="dashboard.html" style="color:#B8C9BB">Seller dashboard ↗</a> · <a href="sign-in.html" style="color:#B8C9BB">Sign out</a></div>
+</aside>
+<main style="flex: 1 1 0; min-width: 0; padding: 26px 32px 64px; box-sizing: border-box; display: flex; flex-direction: column; gap: 20px;">
+  <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:20px"><div><div style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#24512F">Staff · Growth</div><h1 class="h1" style="margin-top:6px">Weekly email builder</h1></div><div class="row" style="gap:8px"><input class="in" placeholder="Search sellers, buyers, phone…" style="width:280px"><a class="btn o" href="admin-review.html">14 to review</a></div></div>
+  
+<div class="row" style="justify-content:space-between"><div class="tabs"><a class="on" href="#">Texas · Thu Oct 2</a><a href="#">Georgia · Thu Oct 2</a><a href="#">Oregon · Thu Oct 2</a><a href="#">Sent</a></div><div class="row" style="gap:8px"><button class="btn o s">Send me a preview</button><button class="btn s">Schedule · Thu 6:00 am</button></div></div>
+<div style="display:grid;grid-template-columns:1fr 460px;gap:16px;align-items:start">
+  <div style="display:flex;flex-direction:column;gap:12px">
+    <div class="card" style="padding:14px 16px"><div class="row" style="justify-content:space-between"><b>1 · Subject &amp; intro</b><span class="bd ok">Auto-drafted</span></div><input class="in" style="width:100%;margin-top:8px" value="Turkeys close Nov 10, first pecans, and 6 new farms near you"><textarea class="in" rows="2" style="margin-top:8px">Short one this week: pre-orders are closing on birds, the pecan trees are starting, and six new verified sellers came on within 25 miles of most of you.</textarea></div>
+    <div class="card" style="padding:14px 16px"><div class="row" style="justify-content:space-between"><b>2 · In season near you</b><span class="xs mut">personalized per ZIP · items marked "in season" this week</span></div><div class="row" style="gap:6px;margin-top:8px;flex-wrap:wrap"><span class="bd mut" style="font-weight:600">Pecans · 14 sellers</span><span class="bd mut" style="font-weight:600">Thanksgiving turkey pre-order · 9</span><span class="bd mut" style="font-weight:600">Fall greens · 22</span><span class="bd mut" style="font-weight:600">Sweet potatoes · 11</span><span class="bd mut" style="font-weight:600">Late peaches · 2</span><span class="bd mut" style="font-weight:600">Gulf shrimp · 4</span><span class="bd mut" style="font-weight:600">Sourdough · 17</span></div></div>
+    <div class="card" style="padding:14px 16px"><div class="row" style="justify-content:space-between"><b>3 · Pro block</b><span class="bd ok">38 sellers · sorted by distance to reader</span></div><p class="xs mut" style="margin:6px 0 0">Each Pro seller gets one line: name · one in-season item · distance. Callouts (e.g. "closes Nov 10") come from the product's status.</p></div>
+    <div class="card" style="padding:14px 16px"><div class="row" style="justify-content:space-between"><b>4 · New this week</b><span class="bd ok">Auto</span></div><p class="xs mut" style="margin:6px 0 0">Verified sellers added within 25 mi of the reader, max 6. Falls back to the state if fewer than 2.</p></div>
+    <div class="card" style="padding:14px 16px"><div class="row" style="justify-content:space-between"><b>5 · Neighbor shares</b><span class="bd ok">Auto · 3 closest live shares</span></div></div>
+    <div class="card" style="padding:14px 16px;border-color:#EFE3C2;background:#FBF7EC"><div class="row" style="justify-content:space-between"><b>6 · Sponsor line</b><span class="bd warn">Creative missing the required line</span></div><input class="in" style="width:100%;margin-top:8px" value="Produce box company — Sponsored · National retailer · Not a farm. Paid placement. [needs approval]"><div class="row" style="gap:8px;margin-top:8px"><button class="btn s o">Approve</button><button class="btn s o">Send back</button><label class="row xs" style="gap:6px;margin-left:auto"><span class="tog on"></span>Include this week</label></div></div>
+    <div class="card" style="padding:14px 16px"><div class="row" style="justify-content:space-between"><b>7 · Footer</b><span class="xs mut">unsubscribe · change ZIP · why you got this</span></div></div>
+  </div>
+  <div class="card" style="position:sticky;top:20px;overflow:hidden"><div style="padding:10px 14px;border-bottom:1px solid #E4E1DA" class="row"><b class="sm">Preview · reader at 78704</b><span class="xs mut" style="margin-left:auto">21,406 recipients · est. 38% open</span></div>
+    <div style="padding:18px;background:#FAFAF8;font-size:13.5px;line-height:1.6">
+      <div style="font-family:Fraunces,Georgia,serif;font-size:20px;font-weight:600">Turkeys close Nov 10, first pecans, and 6 new farms near you</div>
+      <p style="margin:8px 0 12px;color:#4A443B">Short one this week: pre-orders are closing on birds, the pecan trees are starting…</p>
+      <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#24512F">In season within 25 mi</div>
+      <div style="margin:4px 0 12px">🥧 Pecans — 14 sellers · 🦃 Turkey pre-order — 9 (closes Nov 10) · 🥬 Fall greens — 22</div>
+      <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#24512F">From sellers near you</div>
+      <div style="margin:4px 0 12px;border-left:3px solid #2F6B3F;padding-left:10px"><b>Blue Oak Ranch</b> · 22 mi · Thanksgiving turkey — 61 of 80 spoken for, closes Nov 10<br><b>Hollow Creek Bakehouse</b> · 3 mi · Pear galette this week<br><b>Cedar Bend Nursery</b> · 14 mi · Strawberry starts are in</div>
+      <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#24512F">New this week</div>
+      <div style="margin:4px 0 12px">Salt Lick Pastures (Driftwood) · Sul Ross Kitchen · Athens Bread Club…</div>
+      <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#24512F">Neighbor shares</div>
+      <div style="margin:4px 0 12px">Concord grapes · Hyde Park · 0.6 mi — free, come pick</div>
+      <div style="background:#F5E9C8;color:#6E5314;font-size:12px;padding:8px 10px;border-radius:6px">Sponsored · National retailer · Not a farm. Paid placement. — Produce box company</div>
+      <p class="xs mut" style="margin:12px 0 0">You asked for this at farmtolocal.com · ZIP 78704 · change ZIP · unsubscribe</p>
+    </div></div>
+</div>
+</main>
+</div>
+<script src="assets/site.js"></script>
+<script>document.querySelectorAll('.tog').forEach(function(t){t.addEventListener('click',function(){t.classList.toggle('on')})})</script>
+</body>
+</html>

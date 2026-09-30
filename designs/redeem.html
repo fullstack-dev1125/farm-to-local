@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1280">
+<title>Log an FTL10 redemption — Seller dashboard</title>
+<meta name="description" content="Farm to Local — Log an FTL10 redemption — Seller dashboard.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&amp;family=Instrument+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+.h1{font-family:'Fraunces',Georgia,serif;font-size:40px;font-weight:600;letter-spacing:-0.01em;line-height:1.1;margin:0}
+.h2{font-family:'Fraunces',Georgia,serif;font-size:26px;font-weight:600;letter-spacing:-0.01em;margin:0}
+.h3{font-family:'Fraunces',Georgia,serif;font-size:19px;font-weight:600;margin:0}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:#24512F}
+.card{background:#fff;border:1px solid #E4E1DA;border-radius:16px}
+.inset{background:#FCFCFA;border:1px solid #E4E1DA;border-radius:12px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:46px;padding:0 22px;border-radius:999px;background:#2F6B3F;color:#fff;font-weight:600;font-size:15px;text-decoration:none;border:0;cursor:pointer;font-family:inherit}
+.btn.o{background:#fff;color:#1E1B16;border:1.5px solid #E4E1DA}
+.btn.d{background:#1E1B16}
+.in{height:46px;border:1.5px solid #E4E1DA;border-radius:10px;padding:0 14px;background:#fff;font-size:15px;font-family:inherit;color:#1E1B16;width:100%;box-sizing:border-box}
+textarea.in{height:auto;padding:12px 14px;resize:vertical}
+select.in{appearance:none;-webkit-appearance:none;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%236B6357' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 14px center}
+.lbl{font-size:13px;font-weight:600;display:block;margin-bottom:6px}
+.mut{color:#6B6357}
+.bd{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:999px;font-size:12px;font-weight:600;white-space:nowrap}
+.bd.farm{background:#2F8F4E;color:#fff}.bd.ver{background:#2563EB;color:#fff}.bd.feat{background:#D9471F;color:#fff}.bd.part{background:#F5E9C8;color:#6E5314}.bd.ok{background:#E4EFE3;color:#24512F}.bd.mut{background:#ECEAE5;color:#6B6357}.bd.pre{background:#DDE8EE;color:#23516B}.bd.spon{background:#F5E9C8;color:#6E5314}.bd.share{background:#E4EFE3;color:#24512F}
+.pill{display:inline-flex;align-items:center;padding:3px 9px;border-radius:999px;border:1px solid #C9D9CC;background:#F3F8F4;color:#24512F;font-size:12px;font-weight:600}
+.row{display:flex;align-items:center;gap:10px}
+.tbl{width:100%;border-collapse:collapse;font-size:14px}
+.tbl th{text-align:left;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#6B6357;padding:10px 14px;border-bottom:1px solid #E4E1DA}
+.tbl td{padding:12px 14px;border-bottom:1px solid #ECEAE5;vertical-align:top}
+.tbl tr:last-child td{border-bottom:0}
+.acc{border-top:1px solid #ECEAE5}.acc summary{list-style:none;display:flex;justify-content:space-between;align-items:center;padding:14px 0;font-weight:600;font-size:15px;cursor:pointer}.acc summary::-webkit-details-marker{display:none}.acc summary::after{content:"+";font-size:20px;color:#6B6357}.acc[open] summary::after{content:"–"}.acc .bdy{padding:0 0 16px;font-size:14px;line-height:1.6;color:#4A443B}
+.sq{aspect-ratio:1/1;background-size:cover;background-position:center;border-radius:12px}
+</style>
+</head>
+<body data-page="redeem">
+<div style="width: 1280px; box-sizing: border-box; display: flex; flex-direction: column; background: #FAFAF8; font-family: 'Instrument Sans', system-ui, sans-serif; color: #1E1B16; min-height: 100vh;">
+<header style="display: flex; align-items: center; justify-content: space-between; padding: 0 64px; height: 72px; background: #FFFFFF; border-bottom: 1px solid #E4E1DA;">
+  <a href="index.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: #1E1B16;">
+    <span style="width: 34px; height: 34px; border-radius: 9px; background: #2F6B3F; display: flex; align-items: center; justify-content: center;">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20c0-9 5-14 16-16-1 11-6 16-16 16z"></path><path d="M4 20c4-6 8-9 12-12"></path></svg>
+    </span>
+    <span style="font-family: 'Fraunces', Georgia, serif; font-size: 23px; font-weight: 600; letter-spacing: -0.01em;">Farm to Local</span>
+  </a>
+  <nav style="display: flex; gap: 30px; font-size: 15px; font-weight: 500;"><a href="browse.html" style="color: #1E1B16; text-decoration: none;">Browse</a><a href="city-austin.html" style="color: #1E1B16; text-decoration: none;">Farmers Markets</a><a href="ships.html" style="color: #1E1B16; text-decoration: none;">Ships to You</a><a href="share.html" style="color: #1E1B16; text-decoration: none;">Neighbor Share</a><a href="how-it-works.html" style="color: #1E1B16; text-decoration: none;">How it works</a></nav>
+  <div style="display: flex; gap: 14px; align-items: center;">
+    <a href="sign-in.html" style="color: #1E1B16; text-decoration: none; font-size: 15px; font-weight: 500; padding: 0 6px; height: 44px; display: flex; align-items: center;">Sign in</a>
+    <a href="list-step-1.html" style="background: #2F6B3F; color: #FFFFFF; padding: 0 20px; height: 44px; display: inline-flex; align-items: center; border-radius: 999px; font-weight: 600; font-size: 15px; text-decoration: none;">List your farm — free</a>
+  </div>
+</header>
+<div style="display: flex; align-items: center; gap: 8px; padding: 0 64px; height: 44px; font-size: 14px; color: #5C554A;"><a href="index.html" style="color: #5C554A; text-decoration: none;">Home</a><span>›</span><a href="dashboard.html" style="color: #5C554A; text-decoration: none;">Dashboard</a><span>›</span><span style="color: #1E1B16; font-weight: 600;">Log a redemption</span><span style="margin-left: auto; font-size: 13px; color: #6B6357;">farmtolocal.com/dashboard/redeem/</span></div>
+
+<div style="padding:24px 64px 64px;display:flex;flex-direction:column;gap:22px">
+  <div><div class="eyebrow">Partner sellers · coupon FTL10</div><h1 class="h1" style="margin-top:8px">Log a redemption in 10 seconds.</h1><p style="font-size:16px;line-height:1.6;color:#4A443B;margin:10px 0 0;max-width:760px">A buyer says "Farm to Local" or shows the code at your stand. You give 10% off, log it here (or text it), and your Partner fee is 6% of that sale — billed monthly, never at the stand. Online orders with the code log themselves.</p></div>
+  <div style="display:grid;grid-template-columns:420px 1fr;gap:28px;align-items:start">
+    <div class="card" style="padding:24px;display:flex;flex-direction:column;gap:14px;border-color:#1E1B16">
+      <div class="row" style="justify-content:space-between"><span style="font-weight:700">At the stand</span><span class="bd part">Blue Oak Ranch · Partner</span></div>
+      <div><label class="lbl">Sale total (before discount)</label><input class="in" value="$142.00" inputmode="decimal" style="font-size:22px;height:56px;font-family:Fraunces,Georgia,serif"></div>
+      <div><label class="lbl">Buyer's mobile — last 4 digits (optional)</label><input class="in" placeholder="0188" inputmode="numeric" maxlength="4"><span class="mut" style="font-size:12px">Lets us count them as a first-time buyer and skip double-dipping.</span></div>
+      <div><label class="lbl">Where</label><select class="in"><option>Farm stand · Sat</option><option>SFC Farmers Market</option><option>Local delivery</option><option>Phone / text order</option></select></div>
+      <div class="inset" style="padding:12px 14px;font-size:14px;line-height:1.7"><div class="row" style="justify-content:space-between"><span>Buyer pays (10% off)</span><b>$127.80</b></div><div class="row" style="justify-content:space-between"><span>Your Partner fee (6% of $127.80)</span><b>$7.67</b></div><div class="row" style="justify-content:space-between;color:#24512F"><span>Billed on your Oct 5 statement</span><b>not today</b></div></div>
+      <button class="btn d" style="height:52px">Log redemption</button>
+      <span class="mut" style="font-size:12px;text-align:center">Or text <b>FTL10 142</b> to (555) 000-0000 from your account phone.</span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div class="card" style="padding:0;overflow:hidden"><div style="padding:14px 18px;border-bottom:1px solid #E4E1DA;display:flex;justify-content:space-between;align-items:center"><span style="font-weight:700">September · 19 redemptions</span><span class="mut" style="font-size:13px">$2,140 tracked · $128.40 fee due Oct 5</span></div>
+        <table class="tbl"><tr><th>When</th><th>Where</th><th>Sale</th><th>Buyer paid</th><th>Fee</th><th>Source</th></tr>
+        <tr><td>Sat Sep 27 · 11:04</td><td>Farm stand</td><td>$142.00</td><td>$127.80</td><td>$7.67</td><td><span class="bd mut">Logged</span></td></tr><tr><td>Sat Sep 27 · 9:40</td><td>SFC Market</td><td>$68.00</td><td>$61.20</td><td>$3.67</td><td><span class="bd mut">Texted</span></td></tr><tr><td>Thu Sep 25</td><td>Online · blueoakranchtx.com</td><td>$1,650.00</td><td>$1,485.00</td><td>$89.10</td><td><span class="bd mut">Tracked link</span></td></tr><tr><td>Sat Sep 20 · 10:15</td><td>Farm stand</td><td>$94.50</td><td>$85.05</td><td>$5.10</td><td><span class="bd mut">Logged</span></td></tr><tr><td>Sat Sep 20 · 9:02</td><td>SFC Market</td><td>$42.00</td><td>$37.80</td><td>$2.27</td><td><span class="bd mut">Logged</span></td></tr><tr><td>Thu Sep 18</td><td>Local delivery</td><td>$120.00</td><td>$108.00</td><td>$6.48</td><td><span class="bd mut">Texted</span></td></tr>
+        </table><div style="padding:10px 18px;border-top:1px solid #ECEAE5"><a href="dash-billing.html" style="font-size:13px;font-weight:600;color:#2F6B3F;text-decoration:none">Full statement →</a></div></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+        <div class="card" style="padding:18px"><div style="font-weight:700;font-size:14px">Stand sign</div><p class="mut" style="font-size:13px;margin:6px 0 10px;line-height:1.5">QR to your page + "Say Farm to Local for 10% off." Print at home or we mail a weatherproof one ($6).</p><a class="btn o" href="dash-featured.html" style="height:38px;font-size:14px">Print stand sign</a></div>
+        <div class="card" style="padding:18px"><div style="font-weight:700;font-size:14px">Honesty check</div><p class="mut" style="font-size:13px;margin:6px 0 0;line-height:1.5">We don't audit your register. Under-logging just means we send you fewer buyers over time — Featured rotation weights on tracked sales. Most Partners log everything because the math works.</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+<footer style="margin-top: auto; background: #1E1B16; color: #E8E1D3; padding: 48px 64px 32px; display: flex; flex-direction: column; gap: 32px;">
+  <div style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 32px;">
+    <div style="display: flex; flex-direction: column; gap: 10px;">
+      <span style="font-family: 'Fraunces', Georgia, serif; font-size: 22px; font-weight: 600; color: #FFFFFF;">Farm to Local</span>
+      <span style="font-size: 14px; line-height: 1.5; color: #B8AE9C;">Free for the people who grow and make. Paid by the people who ship and advertise.</span>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 8px; font-size: 14px;"><span style="font-weight: 700; color: #FFFFFF; margin-bottom: 4px;">Browse</span><a href="browse.html" style="color: #D6CEBF; text-decoration: none;">All states</a><a href="city-austin.html" style="color: #D6CEBF; text-decoration: none;">Produce</a><a href="category-meat-poultry.html" style="color: #D6CEBF; text-decoration: none;">Meat &amp; Poultry</a><a href="city-austin.html" style="color: #D6CEBF; text-decoration: none;">Seafood</a><a href="city-austin.html" style="color: #D6CEBF; text-decoration: none;">Bakery &amp; Sweets</a><a href="city-austin.html" style="color: #D6CEBF; text-decoration: none;">Farmers Markets</a><a href="services-austin.html" style="color: #D6CEBF; text-decoration: none;">Service providers</a><a href="ships.html" style="color: #D6CEBF; text-decoration: none;">Ships to Your Door</a><a href="share.html" style="color: #D6CEBF; text-decoration: none;">Neighbor Share</a><a href="supply.html" style="color: #D6CEBF; text-decoration: none;">Gear farms use</a></div>
+    <div style="display: flex; flex-direction: column; gap: 8px; font-size: 14px;"><span style="font-weight: 700; color: #FFFFFF; margin-bottom: 4px;">For sellers</span><a href="list-step-1.html" style="color: #D6CEBF; text-decoration: none;">List for free</a><a href="sell.html" style="color: #D6CEBF; text-decoration: none;">Pro &amp; Partner</a><a href="sell.html" style="color: #D6CEBF; text-decoration: none;">Get verified</a><a href="seller-rules.html" style="color: #D6CEBF; text-decoration: none;">Seller rules</a><a href="dashboard.html" style="color: #D6CEBF; text-decoration: none;">Seller dashboard</a><a href="advertise.html" style="color: #D6CEBF; text-decoration: none;">Advertise (national retailers)</a></div>
+    <div style="display: flex; flex-direction: column; gap: 8px; font-size: 14px;"><span style="font-weight: 700; color: #FFFFFF; margin-bottom: 4px;">Company</span><a href="buy.html" style="color: #D6CEBF; text-decoration: none;">For buyers</a>
+      <a href="about.html" style="color: #D6CEBF; text-decoration: none;">About</a><a href="how-it-works.html" style="color: #D6CEBF; text-decoration: none;">How it works</a><a href="contact.html" style="color: #D6CEBF; text-decoration: none;">Contact</a><a href="about.html" style="color: #D6CEBF; text-decoration: none;">Press</a></div>
+    <div style="display: flex; flex-direction: column; gap: 8px; font-size: 14px;"><span style="font-weight: 700; color: #FFFFFF; margin-bottom: 4px;">Legal</span><a href="terms.html" style="color: #D6CEBF; text-decoration: none;">Terms of service</a><a href="seller-rules.html" style="color: #D6CEBF; text-decoration: none;">Seller rules</a><a href="privacy.html" style="color: #D6CEBF; text-decoration: none;">Privacy policy</a><a href="report.html" style="color: #D6CEBF; text-decoration: none;">Report a listing</a></div>
+  </div>
+  <div style="display: flex; justify-content: space-between; font-size: 13px; color: #B8AE9C; border-top: 1px solid #3A352C; padding-top: 20px; gap: 24px;">
+    <span>© 2026 Farm to Local · Sellers are responsible for compliance with state and federal food laws. Farm to Local lists; it doesn't sell.</span>
+    <span style="display: flex; gap: 16px;"><a href="terms.html" style="color: #B8AE9C; text-decoration: none;">Terms</a><a href="privacy.html" style="color: #B8AE9C; text-decoration: none;">Privacy</a><a href="contact.html" style="color: #B8AE9C; text-decoration: none;">Contact</a></span>
+  </div>
+</footer>
+</div>
+<script src="assets/site.js"></script>
+</body>
+</html>

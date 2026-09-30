@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+<style>html{scroll-behavior:smooth}</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1280">
+<title>Farm to Local — Post a neighbor share</title>
+<meta name="description" content="Farm to Local — verified local farms, makers, markets and neighbor shares, searchable by ZIP.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&amp;family=Instrument+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body data-page="share-post">
+<div style="width: 1280px; box-sizing: border-box; display: flex; flex-direction: column; background: #FAFAF8; font-family: 'Instrument Sans', system-ui, sans-serif; color: #1E1B16;">
+
+<header style="display: flex; align-items: center; justify-content: space-between; padding: 0 64px; height: 72px; background: #FFFFFF; border-bottom: 1px solid #E4E1DA;">
+  <a href="index.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: #1E1B16;">
+    <span style="width: 34px; height: 34px; border-radius: 9px; background: #2F6B3F; display: flex; align-items: center; justify-content: center;">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20c0-9 5-14 16-16-1 11-6 16-16 16z"></path><path d="M4 20c4-6 8-9 12-12"></path></svg>
+    </span>
+    <span style="font-family: 'Fraunces', Georgia, serif; font-size: 23px; font-weight: 600; letter-spacing: -0.01em;">Farm to Local</span>
+  </a>
+  <nav style="display: flex; gap: 30px; font-size: 15px; font-weight: 500;">
+    <a href="state-texas.html" style="color: #1E1B16; text-decoration: none;">Browse</a>
+    <a href="city-austin.html" style="color: #1E1B16; text-decoration: none;">Farmers Markets</a>
+    <a href="index.html" style="color: #1E1B16; text-decoration: none;">Ships to You</a>
+    <a href="share.html" style="color: #1E1B16; text-decoration: none;">Neighbor Share</a>
+    <a href="how-it-works.html" style="color: #1E1B16; text-decoration: none;">How it works</a>
+  </nav>
+  <div style="display: flex; gap: 14px; align-items: center;">
+    <a href="sign-in.html" style="color: #1E1B16; text-decoration: none; font-size: 15px; font-weight: 500; padding: 0 6px; height: 44px; display: flex; align-items: center;">Sign in</a>
+    <a href="list-step-1.html" style="background: #2F6B3F; color: #FFFFFF; padding: 0 20px; height: 44px; display: flex; align-items: center; border-radius: 999px; font-weight: 600; font-size: 15px; text-decoration: none;">List your farm — free</a>
+  </div>
+</header>
+
+
+<div style="display: flex; align-items: center; gap: 8px; padding: 0 64px; height: 44px; font-size: 14px; color: #5C554A;">
+  <a href="index.html" style="color: #5C554A; text-decoration: none;">Home</a><span>›</span><a href="share.html" style="color: #5C554A; text-decoration: none;">Neighbor Share</a><span>›</span><span style="color: #1E1B16; font-weight: 600;">Post a share</span>
+</div>
+
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) 420px; gap: 32px; padding: 12px 64px 56px; align-items: start;">
+  <div style="display: flex; flex-direction: column; gap: 16px;">
+    <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 8px;">
+      <span style="display: inline-flex; align-self: flex-start; background: #E6EEE3; color: #24512F; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 5px 10px; border-radius: 999px;">Free · about 60 seconds</span>
+      <h1 style="margin: 0; font-family: 'Fraunces', Georgia, serif; font-size: 40px; line-height: 1.08; font-weight: 600; letter-spacing: -0.015em;">Got extra? Share it with the block.</h1>
+      <p style="margin: 0; font-size: 16px; line-height: 1.55; color: #5C554A; max-width: 620px;">Fruit trees, grape vines, a garden that got away from you. Neighbors come get it — you don't clean it up. No account needed; your post expires in 14 days.</p>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 12px; padding: 22px 24px; background: #FFFFFF; border: 1px solid #E4E1DA; border-radius: 16px;"><div style="display: flex; justify-content: space-between; align-items: baseline;"><span style="font-size: 15px; font-weight: 700;">1 · What are you sharing?</span><span style="font-size: 12px; color: #6B6357;">Required</span></div><input id="s-title" type="text" placeholder="Concord grapes, about 20 lb on the vine" style="height: 44px; border: 1px solid #E4E1DA; border-radius: 10px; padding: 0 14px; font-size: 15px; font-family: inherit; background: #FFFFFF; color: #1E1B16; outline: none; width: 100%; box-sizing: border-box;"><div style="display: flex; gap: 8px; flex-wrap: wrap;"><button type="button" class="schip" data-v="Fruit" style="height: 36px; padding: 0 14px; border-radius: 999px; border: 1px solid #1E1B16; background: #1E1B16; color: #FFFFFF; font-size: 14px; cursor: pointer; font-family: inherit;">Fruit</button><button type="button" class="schip" data-v="Vegetables" style="height: 36px; padding: 0 14px; border-radius: 999px; border: 1px solid #E4E1DA; background: #FFFFFF; color: #1E1B16; font-size: 14px; cursor: pointer; font-family: inherit;">Vegetables</button><button type="button" class="schip" data-v="Herbs" style="height: 36px; padding: 0 14px; border-radius: 999px; border: 1px solid #E4E1DA; background: #FFFFFF; color: #1E1B16; font-size: 14px; cursor: pointer; font-family: inherit;">Herbs</button><button type="button" class="schip" data-v="Eggs" style="height: 36px; padding: 0 14px; border-radius: 999px; border: 1px solid #E4E1DA; background: #FFFFFF; color: #1E1B16; font-size: 14px; cursor: pointer; font-family: inherit;">Eggs</button><button type="button" class="schip" data-v="Cuttings &amp; starts" style="height: 36px; padding: 0 14px; border-radius: 999px; border: 1px solid #E4E1DA; background: #FFFFFF; color: #1E1B16; font-size: 14px; cursor: pointer; font-family: inherit;">Cuttings &amp; starts</button><button type="button" class="schip" data-v="Firewood" style="height: 36px; padding: 0 14px; border-radius: 999px; border: 1px solid #E4E1DA; background: #FFFFFF; color: #1E1B16; font-size: 14px; cursor: pointer; font-family: inherit;">Firewood</button><button type="button" class="schip" data-v="Other" style="height: 36px; padding: 0 14px; border-radius: 999px; border: 1px solid #E4E1DA; background: #FFFFFF; color: #1E1B16; font-size: 14px; cursor: pointer; font-family: inherit;">Other</button></div></div>
+    <div style="display: flex; flex-direction: column; gap: 12px; padding: 22px 24px; background: #FFFFFF; border: 1px solid #E4E1DA; border-radius: 16px;"><div style="display: flex; justify-content: space-between; align-items: baseline;"><span style="font-size: 15px; font-weight: 700;">2 · Add a photo</span><span style="font-size: 12px; color: #6B6357;">Optional — posts with photos get picked up 4× faster</span></div><label for="s-photo" style="display: flex; align-items: center; gap: 16px; padding: 16px; border: 1px dashed #C9BFA9; border-radius: 12px; background: #FCFCFA; cursor: pointer;"><span id="s-photo-thumb" style="width: 72px; height: 72px; border-radius: 10px; background: #ECEAE5; background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#6B6357" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></span><span style="display: flex; flex-direction: column; gap: 3px;"><span style="font-weight: 600; font-size: 15px;">Snap one photo of what you're sharing</span><span style="font-size: 13px; color: #6B6357;">Square works best · JPG or PNG · we never show your house number</span></span><input id="s-photo" type="file" accept="image/*" style="display: none;"></label></div>
+    <div style="display: flex; flex-direction: column; gap: 12px; padding: 22px 24px; background: #FFFFFF; border: 1px solid #E4E1DA; border-radius: 16px;"><div style="display: flex; justify-content: space-between; align-items: baseline;"><span style="font-size: 15px; font-weight: 700;">3 · Where?</span><span style="font-size: 12px; color: #6B6357;">Required</span></div><span style="font-size: 13px; color: #6B6357; margin-top: -6px;">We show the block, never your door. The exact address goes only to people you approve.</span><div style="display: grid; grid-template-columns: 1fr 140px; gap: 10px;"><input id="s-addr" type="text" placeholder="Street address" style="height: 44px; border: 1px solid #E4E1DA; border-radius: 10px; padding: 0 14px; font-size: 15px; font-family: inherit; background: #FFFFFF; color: #1E1B16; outline: none; width: 100%; box-sizing: border-box;"><input id="s-zip" type="text" placeholder="ZIP" style="height: 44px; border: 1px solid #E4E1DA; border-radius: 10px; padding: 0 14px; font-size: 15px; font-family: inherit; background: #FFFFFF; color: #1E1B16; outline: none; width: 100%; box-sizing: border-box;"></div><div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;"><span style="font-size: 13px; color: #5C554A; margin-right: 4px;">How do they get it?</span><button type="button" class="schip" data-v="Come pick" style="height: 36px; padding: 0 14px; border-radius: 999px; border: 1px solid #1E1B16; background: #1E1B16; color: #FFFFFF; font-size: 14px; cursor: pointer; font-family: inherit;">Come pick</button><button type="button" class="schip" data-v="Porch box" style="height: 36px; padding: 0 14px; border-radius: 999px; border: 1px solid #E4E1DA; background: #FFFFFF; color: #1E1B16; font-size: 14px; cursor: pointer; font-family: inherit;">Porch box</button><button type="button" class="schip" data-v="Curbside" style="height: 36px; padding: 0 14px; border-radius: 999px; border: 1px solid #E4E1DA; background: #FFFFFF; color: #1E1B16; font-size: 14px; cursor: pointer; font-family: inherit;">Curbside</button><button type="button" class="schip" data-v="Message first" style="height: 36px; padding: 0 14px; border-radius: 999px; border: 1px solid #E4E1DA; background: #FFFFFF; color: #1E1B16; font-size: 14px; cursor: pointer; font-family: inherit;">Message first</button></div></div>
+    <div style="display: flex; flex-direction: column; gap: 12px; padding: 22px 24px; background: #FFFFFF; border: 1px solid #E4E1DA; border-radius: 16px;"><div style="display: flex; justify-content: space-between; align-items: baseline;"><span style="font-size: 15px; font-weight: 700;">4 · When — this year, and every year?</span><span style="font-size: 12px; color: #6B6357;">Required</span></div><div style="display: flex; gap: 8px; flex-wrap: wrap;"><button type="button" class="schip" data-v="Now — ripe today" style="height: 36px; padding: 0 14px; border-radius: 999px; border: 1px solid #1E1B16; background: #1E1B16; color: #FFFFFF; font-size: 14px; cursor: pointer; font-family: inherit;">Now — ripe today</button><button type="button" class="schip" data-v="This weekend" style="height: 36px; padding: 0 14px; border-radius: 999px; border: 1px solid #E4E1DA; background: #FFFFFF; color: #1E1B16; font-size: 14px; cursor: pointer; font-family: inherit;">This weekend</button><button type="button" class="schip" data-v="Next 2 weeks" style="height: 36px; padding: 0 14px; border-radius: 999px; border: 1px solid #E4E1DA; background: #FFFFFF; color: #1E1B16; font-size: 14px; cursor: pointer; font-family: inherit;">Next 2 weeks</button></div>
+<div id="s-season" style="display: flex; flex-direction: column; gap: 10px; padding: 14px 16px; background: #F3F8F4; border: 1px solid #C9D9CC; border-radius: 12px;">
+  <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;"><input id="s-recur" type="checkbox" checked style="width: 16px; height: 16px; margin: 0; accent-color: #2F6B3F;"><span style="font-weight: 600; font-size: 14px;">This comes back every year — post it once</span></label>
+  <span style="font-size: 13px; color: #5C554A; line-height: 1.5;">Set the window your tree, vines or beds are usually ready. We'll put the share live at the start of the window each year, text you a week before to confirm, and take it down at the end. Change it any time.</span>
+  <div id="s-recur-fields" style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px;">
+    <label style="display: flex; flex-direction: column; gap: 4px;"><span style="font-size: 12px; font-weight: 600; color: #5C554A;">Usually ready</span><select style="height: 40px; border: 1px solid #E4E1DA; border-radius: 10px; padding: 0 12px; font-size: 14px; font-family: inherit; background: #FFFFFF; color: #1E1B16; outline: none;"><option>Early August</option><option>Mid August</option><option selected>Late August</option><option>Early September</option><option>Mid September</option><option>Late September</option><option>Early October</option></select></label>
+    <label style="display: flex; flex-direction: column; gap: 4px;"><span style="font-size: 12px; font-weight: 600; color: #5C554A;">Usually done</span><select style="height: 40px; border: 1px solid #E4E1DA; border-radius: 10px; padding: 0 12px; font-size: 14px; font-family: inherit; background: #FFFFFF; color: #1E1B16; outline: none;"><option>Early September</option><option selected>Mid September</option><option>Late September</option><option>Early October</option><option>Mid October</option><option>Late October</option></select></label>
+    <label style="display: flex; flex-direction: column; gap: 4px;"><span style="font-size: 12px; font-weight: 600; color: #5C554A;">Repeats</span><select style="height: 40px; border: 1px solid #E4E1DA; border-radius: 10px; padding: 0 12px; font-size: 14px; font-family: inherit; background: #FFFFFF; color: #1E1B16; outline: none;"><option selected>Every year</option><option>Twice a year (spring + fall)</option><option>Just this once</option></select></label>
+  </div>
+  <div style="display: flex; align-items: center; gap: 10px; font-size: 13px; color: #24512F;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><span>Next goes live <strong>Aug 20, 2027</strong> · we'll text you Aug 13 to confirm it's a good year</span></div>
+</div><div style="display: flex; gap: 8px; align-items: center;"><span style="font-size: 13px; color: #5C554A; margin-right: 4px;">Price</span><button type="button" class="schip" data-v="Free" style="height: 36px; padding: 0 14px; border-radius: 999px; border: 1px solid #1E1B16; background: #1E1B16; color: #FFFFFF; font-size: 14px; cursor: pointer; font-family: inherit;">Free</button><button type="button" class="schip" data-v="Pay what you want" style="height: 36px; padding: 0 14px; border-radius: 999px; border: 1px solid #E4E1DA; background: #FFFFFF; color: #1E1B16; font-size: 14px; cursor: pointer; font-family: inherit;">Pay what you want</button><button type="button" class="schip" data-v="Trade" style="height: 36px; padding: 0 14px; border-radius: 999px; border: 1px solid #E4E1DA; background: #FFFFFF; color: #1E1B16; font-size: 14px; cursor: pointer; font-family: inherit;">Trade</button></div><div style="display: flex; flex-direction: column; gap: 6px;"><span style="font-size: 13px; color: #5C554A;">Anything they should know? <span style="color: #6B6357;">(optional)</span></span><textarea id="s-note" rows="2" placeholder="Bring a bag. Gate is open weekends; the dog is friendly." style="border: 1px solid #E4E1DA; border-radius: 10px; padding: 10px 14px; font-size: 15px; font-family: inherit; background: #FFFFFF; resize: vertical; outline: none;"></textarea></div></div>
+    <div style="display: flex; flex-direction: column; gap: 12px; padding: 22px 24px; background: #FFFFFF; border: 1px solid #E4E1DA; border-radius: 16px;"><div style="display: flex; justify-content: space-between; align-items: baseline;"><span style="font-size: 15px; font-weight: 700;">5 · How do neighbors reach you?</span><span style="font-size: 12px; color: #6B6357;">Required</span></div><div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;"><input id="s-name" type="text" placeholder="First name" style="height: 44px; border: 1px solid #E4E1DA; border-radius: 10px; padding: 0 14px; font-size: 15px; font-family: inherit; background: #FFFFFF; color: #1E1B16; outline: none; width: 100%; box-sizing: border-box;"><input id="s-phone" type="tel" placeholder="Mobile number" style="height: 44px; border: 1px solid #E4E1DA; border-radius: 10px; padding: 0 14px; font-size: 15px; font-family: inherit; background: #FFFFFF; color: #1E1B16; outline: none; width: 100%; box-sizing: border-box;"></div><span style="font-size: 12px; color: #6B6357; line-height: 1.5;">We text a 4-digit code to confirm it's you — that's your login, no password. Neighbors message you through Farm to Local; your number stays private. <strong>Already sell here?</strong> Same number, same account: this share shows up in your dashboard next to your products.</span></div>
+    <div style="display: flex; align-items: center; gap: 16px; padding-top: 4px;">
+      <a href="share.html" style="background: #2F6B3F; color: #FFFFFF; height: 52px; padding: 0 28px; border-radius: 999px; font-size: 16px; font-weight: 600; display: flex; align-items: center; text-decoration: none;">Post the share</a>
+      <span style="font-size: 13px; color: #6B6357; line-height: 1.5;">Live in about a minute. Expires in 14 days — we text you a reminder to renew or take it down.</span>
+    </div>
+  </div>
+
+  <div style="position: sticky; top: 24px; display: flex; flex-direction: column; gap: 14px; margin-top: 186px;">
+    <span style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: #6B6357;">How it will look</span>
+    <div style="background: #FFFFFF; border: 1px solid #E4E1DA; border-radius: 16px; overflow: hidden; display: flex; flex-direction: column;">
+      <div id="p-img" style="aspect-ratio: 1 / 1; background: #ECEAE5 url('assets/photos/list-concord-grape-share.jpg'); background-size: cover; background-position: center;"></div>
+      <div style="padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 8px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; gap: 8px;"><span id="p-price" style="white-space: nowrap; background: #E4EFE3; color: #24512F; font-size: 12px; font-weight: 700; padding: 3px 9px; border-radius: 999px;">Free</span><span id="p-when" style="font-size: 12px; color: #6B6357; white-space: nowrap;">Late Aug – mid Sep · every year</span></div>
+        <div id="p-title" style="font-weight: 600; font-size: 16px; line-height: 1.3;">Concord grapes, about 20 lb on the vine</div>
+        <div id="p-loc" style="font-size: 13px; color: #5C554A;">Your block · Come pick</div>
+      </div>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 10px; padding: 16px 18px; background: #E6EEE3; border-radius: 14px; font-size: 13px; line-height: 1.5; color: #24512F;">
+      <span style="font-weight: 700; color: #1E1B16;">What happens next</span>
+      <span>Your post shows on the Austin map and in "Near you" for anyone within 5 miles.</span>
+      <span>Neighbors message you here; you say yes and share the exact spot.</span>
+      <span>Set it to repeat and it comes back every year on its own — we text you a week before to confirm.</span>
+    </div>
+    <span style="font-size: 12px; color: #6B6357; line-height: 1.5;">Neighbor shares are for backyard surplus, not for sale. Selling regularly? <a href="list-step-1.html" style="color: #24512F; font-weight: 600;">List a free shop page instead →</a></span>
+  </div>
+</div>
+
+<script>
+(function () {
+  var t = document.getElementById('s-title'), pt = document.getElementById('p-title');
+  t.addEventListener('input', function () { pt.textContent = t.value.trim() || 'Concord grapes, about 20 lb on the vine'; });
+  document.getElementById('s-photo').addEventListener('change', function (e) {
+    var f = e.target.files && e.target.files[0]; if (!f) return;
+    var url = URL.createObjectURL(f); document.getElementById('p-img').style.backgroundImage = 'url(' + url + ')';
+    var th = document.getElementById('s-photo-thumb'); th.style.backgroundImage = 'url(' + url + ')'; th.innerHTML = '';
+  });
+  var rc = document.getElementById('s-recur'), rf = document.getElementById('s-recur-fields'), pw = document.getElementById('p-when');
+  rc.addEventListener('change', function () { rf.style.display = rc.checked ? 'grid' : 'none'; pw.textContent = rc.checked ? 'Late Aug – mid Sep · every year' : '14 days left'; });
+  document.querySelectorAll('.schip').forEach(function (c) {
+    var row = c.parentElement;
+    c.addEventListener('click', function () {
+      Array.prototype.forEach.call(row.querySelectorAll('.schip'), function (x) { var on = x === c; x.style.background = on ? '#1E1B16' : '#FFFFFF'; x.style.color = on ? '#FFFFFF' : '#1E1B16'; x.style.borderColor = on ? '#1E1B16' : '#E4E1DA'; });
+      var v = c.dataset.v;
+      if (['Free','Pay what you want','Trade'].indexOf(v) !== -1) { var p = document.getElementById('p-price'); p.textContent = v; p.style.background = v === 'Free' ? '#E4EFE3' : '#F5E9C8'; p.style.color = v === 'Free' ? '#24512F' : '#6E5314'; }
+      if (['Come pick','Porch box','Curbside','Message first'].indexOf(v) !== -1) document.getElementById('p-loc').textContent = 'Your block · ' + v;
+    });
+  });
+})();
+</script>
+
+<footer style="margin-top: auto; background: #1E1B16; color: #E8E1D3; padding: 48px 64px 32px; display: flex; flex-direction: column; gap: 32px;">
+  <div style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 32px;">
+    <div style="display: flex; flex-direction: column; gap: 10px;">
+      <span style="font-family: 'Fraunces', Georgia, serif; font-size: 22px; font-weight: 600; color: #FFFFFF;">Farm to Local</span>
+      <span style="font-size: 14px; line-height: 1.5; color: #B8AE9C;">Free for the people who grow and make. Paid by the people who ship and advertise.</span>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 8px; font-size: 14px;"><span style="font-weight: 700; color: #FFFFFF; margin-bottom: 4px;">Browse</span><a href="browse.html" style="color: #D6CEBF; text-decoration: none;">All states</a><a href="city-austin.html" style="color: #D6CEBF; text-decoration: none;">Produce</a><a href="category-meat-poultry.html" style="color: #D6CEBF; text-decoration: none;">Meat &amp; Poultry</a><a href="city-austin.html" style="color: #D6CEBF; text-decoration: none;">Seafood</a><a href="city-austin.html" style="color: #D6CEBF; text-decoration: none;">Bakery &amp; Sweets</a><a href="city-austin.html" style="color: #D6CEBF; text-decoration: none;">Farmers Markets</a><a href="services-austin.html" style="color: #D6CEBF; text-decoration: none;">Service providers</a><a href="ships.html" style="color: #D6CEBF; text-decoration: none;">Ships to Your Door</a><a href="share.html" style="color: #D6CEBF; text-decoration: none;">Neighbor Share</a><a href="supply.html" style="color: #D6CEBF; text-decoration: none;">Gear farms use</a></div>
+    <div style="display: flex; flex-direction: column; gap: 8px; font-size: 14px;"><span style="font-weight: 700; color: #FFFFFF; margin-bottom: 4px;">For sellers</span><a href="list-step-1.html" style="color: #D6CEBF; text-decoration: none;">List for free</a><a href="sell.html" style="color: #D6CEBF; text-decoration: none;">Pro &amp; Partner</a><a href="sell.html" style="color: #D6CEBF; text-decoration: none;">Get verified</a><a href="seller-rules.html" style="color: #D6CEBF; text-decoration: none;">Seller rules</a><a href="dashboard.html" style="color: #D6CEBF; text-decoration: none;">Seller dashboard</a><a href="advertise.html" style="color: #D6CEBF; text-decoration: none;">Advertise (national retailers)</a></div>
+    <div style="display: flex; flex-direction: column; gap: 8px; font-size: 14px;"><span style="font-weight: 700; color: #FFFFFF; margin-bottom: 4px;">Company</span><a href="buy.html" style="color: #D6CEBF; text-decoration: none;">For buyers</a>
+      <a href="about.html" style="color: #D6CEBF; text-decoration: none;">About</a><a href="how-it-works.html" style="color: #D6CEBF; text-decoration: none;">How it works</a><a href="contact.html" style="color: #D6CEBF; text-decoration: none;">Contact</a><a href="about.html" style="color: #D6CEBF; text-decoration: none;">Press</a></div>
+    <div style="display: flex; flex-direction: column; gap: 8px; font-size: 14px;"><span style="font-weight: 700; color: #FFFFFF; margin-bottom: 4px;">Legal</span><a href="terms.html" style="color: #D6CEBF; text-decoration: none;">Terms of service</a><a href="seller-rules.html" style="color: #D6CEBF; text-decoration: none;">Seller rules</a><a href="privacy.html" style="color: #D6CEBF; text-decoration: none;">Privacy policy</a><a href="report.html" style="color: #D6CEBF; text-decoration: none;">Report a listing</a></div>
+  </div>
+  <div style="display: flex; justify-content: space-between; font-size: 13px; color: #B8AE9C; border-top: 1px solid #3A352C; padding-top: 20px; gap: 24px;">
+    <span>© 2026 Farm to Local · Sellers are responsible for compliance with state and federal food laws. Farm to Local lists; it doesn't sell.</span>
+    <span style="display: flex; gap: 16px;"><a href="terms.html" style="color: #B8AE9C; text-decoration: none;">Terms</a><a href="privacy.html" style="color: #B8AE9C; text-decoration: none;">Privacy</a><a href="contact.html" style="color: #B8AE9C; text-decoration: none;">Contact</a></span>
+  </div>
+</footer>
+
+</div>
+<script src="assets/site.js"></script>
+</body>
+</html>

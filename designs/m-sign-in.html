@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sign in — Farm to Local (mobile)</title>
+<meta name="description" content="Farm to Local — mobile layout: Sign in — Farm to Local (mobile).">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&amp;family=Instrument+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/mobile.css">
+<style>@keyframes ftl-drift-a{from{transform:translateX(0)}to{transform:translateX(-50%)}}@keyframes ftl-drift-b{from{transform:translateX(-50%)}to{transform:translateX(0)}}.ftl-drift-a{animation:ftl-drift-a 60s linear infinite}.ftl-drift-b{animation:ftl-drift-b 75s linear infinite}@media (prefers-reduced-motion: reduce){.ftl-drift-a,.ftl-drift-b{animation:none}}</style>
+</head>
+<body class="m-body" data-page="m-sign-in" data-mobile="1">
+<div class="m">
+<div class="m-top"><a class="ib" href="m-index.html" aria-label="Back" style="margin-left:-8px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></a><span class="ttl"></span></div>
+<section class="sec" style="padding-top:34px;display:flex;flex-direction:column;align-items:center;text-align:center">
+  <span style="width:52px;height:52px;border-radius:14px;background:#2F6B3F;display:flex;align-items:center;justify-content:center"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20c0-9 5-14 16-16-1 11-6 16-16 16z"></path><path d="M4 20c4-6 8-9 12-12"></path></svg></span>
+  <h1 style="margin-top:16px;font-size:26px">Sign in or create an account</h1>
+  <p class="sm mut" style="margin-top:8px;line-height:1.5">Just your mobile number. We text a 4-digit code — no password to remember.</p>
+</section>
+<section class="sec" style="margin-top:26px">
+  <div class="stack" style="gap:12px">
+    <div class="fld"><label>Mobile number</label><input class="in" inputmode="tel" value="(512) 555-0142" style="font-size:18px;height:54px"></div>
+    <button class="btn" id="si-send" style="height:54px">Text me a code</button>
+  </div>
+  <div id="si-code" style="margin-top:22px">
+    <div class="sm b" style="text-align:center">Enter the 4-digit code we texted</div>
+    <div class="row" style="justify-content:center;gap:10px;margin-top:12px"><input class="in si-d" inputmode="numeric" maxlength="1" style="width:58px;height:64px;text-align:center;font-size:26px;font-weight:600;padding:0"><input class="in si-d" inputmode="numeric" maxlength="1" style="width:58px;height:64px;text-align:center;font-size:26px;font-weight:600;padding:0"><input class="in si-d" inputmode="numeric" maxlength="1" style="width:58px;height:64px;text-align:center;font-size:26px;font-weight:600;padding:0"><input class="in si-d" inputmode="numeric" maxlength="1" style="width:58px;height:64px;text-align:center;font-size:26px;font-weight:600;padding:0"></div>
+    <a class="btn d" href="m-dashboard.html" style="margin-top:16px;height:54px">Continue</a>
+    <p class="xs mut" style="text-align:center;margin-top:12px">Didn't get it? <a href="#" style="color:#24512F;font-weight:600">Resend</a> · <a href="#" style="color:#24512F;font-weight:600">Call me instead</a></p>
+  </div>
+  <div class="inset" style="margin-top:28px;padding:14px">
+    <div class="b sm">One account for everything</div>
+    <div class="stack sm" style="margin-top:8px;gap:6px;color:#4A443B"><span>✓ Buyer: saved sellers, messages, weekly local email</span><span>✓ Seller: your shop page, products, bookings</span><span>✓ Neighbor: shares you've posted &amp; seasonal reminders</span></div>
+  </div>
+  <p class="xs mut" style="text-align:center;margin-top:18px;line-height:1.5">By continuing you agree to our <a href="terms.html" style="color:#24512F">Terms</a> and <a href="privacy.html" style="color:#24512F">Privacy</a>. Message &amp; data rates may apply.</p>
+</section>
+<script>document.querySelectorAll('.si-d').forEach(function(i,n,a){i.addEventListener('input',function(){if(i.value&&a[n+1])a[n+1].focus()})});document.getElementById('si-send').addEventListener('click',function(){this.textContent='Code sent ✓';document.querySelector('.si-d').focus()});</script>
+</div>
+
+<nav class="m-tabbar"><a href="m-index.html" class=""><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg>Home</a><a href="m-results.html" class=""><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>Browse</a><a href="share.html" class=""><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20c0-9 5-14 16-16-1 11-6 16-16 16z"/><path d="M4 20c4-6 8-9 12-12"/></svg>Share</a><a href="m-dash-messages.html" class=""><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-8 8H8l-5 3 1.5-4.5A8 8 0 1 1 21 12z"/></svg>Messages</a><a href="m-sign-in.html" class="on"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>Account</a></nav>
+<div class="m-drawer" id="drawer"><div class="dim" data-close></div><div class="pane"><div style="display:flex;justify-content:flex-end"><button class="ib" data-close aria-label="Close"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><a href="m-index.html" class="">Home<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B5AFA3" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></a><a href="m-results.html" class="">Browse near me<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B5AFA3" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></a><a href="city-austin.html" class="">Farmers markets<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B5AFA3" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></a><a href="ships.html" class="">Ships to you<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B5AFA3" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></a><a href="share.html" class="">Neighbor share<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B5AFA3" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></a><a href="services-austin.html" class="">Service providers<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B5AFA3" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></a><a href="how-it-works.html" class="">How it works<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B5AFA3" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></a><a href="buy.html" class="">For buyers<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B5AFA3" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></a><a href="sell.html" class="">For sellers<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B5AFA3" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></a><div class="hr"></div><a href="m-sign-in.html">Sign in</a><a href="list-step-1.html" class="btn" style="margin-top:8px;justify-content:center">List your farm — free</a></div></div>
+<script>
+(function(){
+  var d=document.getElementById('drawer');
+  document.querySelectorAll('[data-drawer]').forEach(function(b){b.addEventListener('click',function(e){e.preventDefault();d.classList.add('open')})});
+  d&&d.querySelectorAll('[data-close]').forEach(function(b){b.addEventListener('click',function(){d.classList.remove('open')})});
+  document.querySelectorAll('.tog').forEach(function(t){t.addEventListener('click',function(){t.classList.toggle('on')})});
+  document.querySelectorAll('[data-sheet]').forEach(function(b){b.addEventListener('click',function(e){e.preventDefault();var s=document.getElementById(b.getAttribute('data-sheet'));s&&s.classList.add('open')})});
+  document.querySelectorAll('.sheet [data-close]').forEach(function(b){b.addEventListener('click',function(){b.closest('.sheet').classList.remove('open')})});
+  document.querySelectorAll('.chips .chip:not([data-static])').forEach(function(c){c.addEventListener('click',function(){c.classList.toggle('on')})});
+  var q=new URLSearchParams(location.search);
+  if(q.get('sheet')){var s=document.getElementById(q.get('sheet'));s&&s.classList.add('open')}
+  if(q.get('view')){document.querySelectorAll('[data-view]').forEach(function(v){v.style.display=v.getAttribute('data-view')===q.get('view')?'':'none'})}
+})();
+</script>
+</body>
+</html>
