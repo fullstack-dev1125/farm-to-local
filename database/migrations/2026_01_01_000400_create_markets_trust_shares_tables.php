@@ -17,8 +17,8 @@ return new class extends Migration
             $table->string('city', 100)->nullable();
             $table->char('state', 2)->index();
             $table->string('zip', 10)->nullable()->index();
-            $table->decimal('lat', 9, 6)->nullable();
-            $table->decimal('lng', 9, 6)->nullable();
+            $table->decimal('lat', 9, 6);   // USDA rows without coordinates fall back to their ZIP centroid
+            $table->decimal('lng', 9, 6);
             $table->json('days')->nullable();      // ["Sat"] or ["Sat","Sun"]
             $table->string('hours', 80)->nullable();
             $table->string('season', 80)->nullable();
@@ -33,7 +33,9 @@ return new class extends Migration
             $table->timestamps();
             $table->softDeletes();
         });
-        DB::statement('ALTER TABLE markets ADD COLUMN location POINT SRID 4326 NULL');
+        // Generated from lat/lng so it can never drift (bulk imports included). SPATIAL indexes need NOT NULL,
+        // hence lat/lng are NOT NULL. POINT(lng, lat) + ST_SRID(…, 4326) = WGS84, as in docs/02 "Geo query".
+        DB::statement('ALTER TABLE markets ADD COLUMN location POINT GENERATED ALWAYS AS (ST_SRID(POINT(lng, lat), 4326)) STORED SRID 4326 NOT NULL');
         DB::statement('ALTER TABLE markets ADD SPATIAL INDEX markets_location_spatial (location)');
 
         Schema::create('market_attendances', function (Blueprint $table) {
@@ -102,7 +104,9 @@ return new class extends Migration
             $table->string('status', 10)->default('active'); // active|expired|removed
             $table->timestamps();
         });
-        DB::statement('ALTER TABLE neighbor_shares ADD COLUMN location POINT SRID 4326 NULL');
+        // Generated from lat/lng so it can never drift (bulk imports included). SPATIAL indexes need NOT NULL,
+        // hence lat/lng are NOT NULL. POINT(lng, lat) + ST_SRID(…, 4326) = WGS84, as in docs/02 "Geo query".
+        DB::statement('ALTER TABLE neighbor_shares ADD COLUMN location POINT GENERATED ALWAYS AS (ST_SRID(POINT(lng, lat), 4326)) STORED SRID 4326 NOT NULL');
         DB::statement('ALTER TABLE neighbor_shares ADD SPATIAL INDEX shares_location_spatial (location)');
     }
 

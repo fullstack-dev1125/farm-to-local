@@ -13,18 +13,15 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
+            // Passwordless, phone-first (CLAUDE.md rule 7). No password, remember token or reset tokens.
+            $table->string('name')->nullable();                 // first SMS login creates the user before a name exists
+            $table->string('phone', 20)->nullable()->unique();  // E.164
+            $table->string('email')->nullable()->unique();      // optional: statements + weekly email only
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
+            $table->timestamp('phone_verified_at')->nullable();
+            $table->string('home_zip', 10)->nullable();
+            $table->string('role', 20)->default('buyer');       // buyer|seller|market_manager|admin
             $table->timestamps();
-        });
-
-        Schema::create('password_reset_tokens', function (Blueprint $table) {
-            $table->string('email')->primary();
-            $table->string('token');
-            $table->timestamp('created_at')->nullable();
         });
 
         Schema::create('sessions', function (Blueprint $table) {
@@ -42,8 +39,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
-        Schema::dropIfExists('password_reset_tokens');
         Schema::dropIfExists('sessions');
+        Schema::dropIfExists('users');
     }
 };

@@ -27,8 +27,8 @@ return new class extends Migration
             $table->char('state', 2)->index();
             $table->string('zip', 10)->nullable()->index();
             $table->string('county', 100)->nullable();
-            $table->decimal('lat', 9, 6)->nullable();
-            $table->decimal('lng', 9, 6)->nullable();
+            $table->decimal('lat', 9, 6);   // seeded sellers without coordinates fall back to their ZIP centroid
+            $table->decimal('lng', 9, 6);
             $table->boolean('show_exact_address')->default(false);
 
             $table->string('status', 20)->default('listed')->index(); // seeded|listed|verified|suspended
@@ -72,8 +72,9 @@ return new class extends Migration
             $table->timestamps();
             $table->softDeletes();
         });
-        // Spatial column for radius search (MySQL 8). SRID 4326 = WGS84.
-        DB::statement('ALTER TABLE sellers ADD COLUMN location POINT SRID 4326 NULL');
+        // Generated from lat/lng so it can never drift (bulk imports included). SPATIAL indexes need NOT NULL,
+        // hence lat/lng are NOT NULL. POINT(lng, lat) + ST_SRID(…, 4326) = WGS84, as in docs/02 "Geo query".
+        DB::statement('ALTER TABLE sellers ADD COLUMN location POINT GENERATED ALWAYS AS (ST_SRID(POINT(lng, lat), 4326)) STORED SRID 4326 NOT NULL');
         DB::statement('ALTER TABLE sellers ADD SPATIAL INDEX sellers_location_spatial (location)');
 
         Schema::create('seller_types', function (Blueprint $table) {

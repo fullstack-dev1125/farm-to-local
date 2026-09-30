@@ -8,16 +8,7 @@ return new class extends Migration
 {
     public function up(): void
     {
-        // Laravel's default users table exists; adapt it for passwordless, phone-first auth.
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('phone', 20)->nullable()->unique()->after('name');
-            $table->string('email')->nullable()->change();
-            $table->string('password')->nullable()->change();
-            $table->timestamp('phone_verified_at')->nullable()->after('email_verified_at');
-            $table->string('home_zip', 10)->nullable()->after('phone_verified_at');
-            $table->string('role', 20)->default('buyer')->after('home_zip'); // buyer|seller|market_manager|admin
-        });
-
+        // users (phone, home_zip, role, no password) is created in 0001_01_01_000000_create_users_table.
         Schema::create('login_codes', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->nullable()->constrained()->nullOnDelete();
@@ -36,8 +27,5 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('login_codes');
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn(['phone', 'phone_verified_at', 'home_zip', 'role']);
-        });
     }
 };
